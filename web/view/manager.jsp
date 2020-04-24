@@ -12,21 +12,24 @@
 <%@page import="java.lang.String"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+ 
 <%
     ArrayList<Driver> drivers = (ArrayList<Driver>)request.getAttribute("myDrivers");
     ArrayList<Vehicle> vehicles = (ArrayList<Vehicle>)request.getAttribute("myVehicles");
     ArrayList<Order> orders = (ArrayList<Order>)request.getAttribute("myOrders");
-    
+   
     Order a = new Order(1,1,1,1,1,1, "q", "q", "q", "q", "q");
     orders.add(a);
-    Order b = new Order(1,1,1,1,1,1, "q", "q", "q", "q", "q");
+    Order b = new Order(1,1,1,1,1,1, "qf", "qf", "qf", "fq", "ffq");
     orders.add(b);
     Manager myInfo = (Manager)request.getAttribute("myInfo");
     String username = (myInfo.getFirst_name() + " " + myInfo.getLast_name());
 %>
 <html>
     <style>
+         footer {
+            background-color: #E6E6FA;
+        }
         div {
             width: 250px;
             border: 10px solid green;
@@ -50,6 +53,7 @@
             <nav>
                 <h3>Orders</h3>
                 <ul style="position: absolute; top: 10%">
+                      
                     <%
                         for(int i = 0; i < orders.size(); i++){
                             Order order = orders.get(i);
@@ -128,5 +132,6 @@
                 </ul>
             </nav>
         </p>
+           
     </body>
 </html>

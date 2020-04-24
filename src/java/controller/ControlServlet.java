@@ -62,7 +62,10 @@ public class ControlServlet extends HttpServlet {
                 url = "/view/admin.jsp";
                 Admin myInfo = getAdmin(username, password);              
                 request.setAttribute("myInfo", myInfo);
-                request.setAttribute("myVehicles", getAllVehicles());
+                request.setAttribute("allVehicles", getAllVehicles());
+                request.setAttribute("allDrivers", getAllDrivers() );
+                request.setAttribute("allAdmins", getAllAdmins() );
+                
             }
             else if(userrole.equals("customer")){
                 url = "/view/customer.jsp";
@@ -70,6 +73,21 @@ public class ControlServlet extends HttpServlet {
                // request.setAttribute("myInfo", myInfo);
             }
         }
+        
+//        else if(action.equals("seeEmployeeList")){
+//            String role = (String) request.getParameter("role");
+//         if(role.equals("driver")){}
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         else if(action.equals("managerChangeOrder")){
             url = "/view/manager.jsp";
             int managerId = Integer.parseInt(request.getParameter("managerId"));
@@ -217,6 +235,47 @@ public class ControlServlet extends HttpServlet {
         }
         return vehicles;
     }
+    
+    private ArrayList<Driver> getAllDrivers(){
+        ArrayList<Driver> drivers = new ArrayList<Driver>();
+        try{
+            Class.forName(DBclass);
+            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
+            Statement stmt = con.createStatement();  
+            ResultSet rs = stmt.executeQuery("SELECT * FROM driver");
+            while(rs.next()){
+                drivers.add(new Driver(rs.getInt("driver_id"), rs.getString("driver_last_name"), rs.getString("driver_first_name"), rs.getString("driver_contacts"), rs.getString("manager_id"), rs.getString("driver_password"), rs.getInt("current_assignment_id")));
+            }
+            con.close();
+        }
+        catch(SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return drivers;
+    }
+    
+    private ArrayList<Admin> getAllAdmins(){
+        ArrayList<Admin> admins = new ArrayList<Admin>();
+        try{
+            Class.forName(DBclass);
+            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
+            Statement stmt = con.createStatement();  
+            ResultSet rs = stmt.executeQuery("SELECT * FROM admin");
+            while(rs.next()){
+                admins.add(new Admin(rs.getInt("admin_id"), rs.getString("admin_last_name"), rs.getString("admin_first_name"), rs.getString("admin_contact"), rs.getString("admin_password") ));
+            }
+            con.close();
+        }
+        catch(SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return admins;
+    }
+    
+    
+    
+    
+    
     
     private ArrayList<Driver> getManagerDrivers(int manager_id){
         ArrayList<Driver> drivers = new ArrayList<Driver>();
