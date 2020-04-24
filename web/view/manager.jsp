@@ -52,8 +52,7 @@
         <p>
             <nav>
                 <h3>Orders</h3>
-                <ul style="position: absolute; top: 10%">
-                      
+                <ul style="position: absolute; top: 10%">                    
                     <%
                         for(int i = 0; i < orders.size(); i++){
                             Order order = orders.get(i);

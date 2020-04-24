@@ -25,9 +25,7 @@
 
 <html>
     <style>
-        footer {
-            background-color: #E6E6FA;
-        }
+         
         div {
             width: 250px;
             border: 10px solid green;
@@ -52,6 +50,7 @@
                 <h3 style="position: absolute; left: 40%; top: 8%">Workers</h3>
                 <ul style="position: absolute; left: 40%; top: 10%">
                     <p>
+                       
                     <form action="ControlServlet" method="post">    
                         <select name="role">
                             <option value="admin">admin</option>
@@ -96,29 +95,14 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
              <nav>
                 <h3 style="position: absolute; left: 70%; top: 8%">Vehicles</h3>
                 <ul style="position: absolute; right: 5%; top: 10%">
-                    <%
-                        for(int i = 0; i < vehicles.size(); i++){
-                            Vehicle vehicle = vehicles.get(i);
-                            out.println("<li><div>");
-                            out.println("<h2>Vehicle ID: " + vehicle.getId() + "</h2>");
-                            out.println("<p>Specs: " + vehicle.getSpecs() + "</p>");
-                            out.println("<p>Status: " + vehicle.getStatus() + "</p>");
-                            out.println("</div></li>");
-                        }
-                    %>
+                       
+                         <%@include file = "seeVehicleList.jsp" %> 
+                     
                 </ul>
             </nav>
-                <footer>footer</footer>
+                
      </body>
 </html>
