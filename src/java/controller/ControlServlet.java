@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ 
 package controller;
 
 import java.io.IOException;
@@ -65,12 +61,14 @@ public class ControlServlet extends HttpServlet {
                 request.setAttribute("allVehicles", getAllVehicles());
                 request.setAttribute("allDrivers", getAllDrivers() );
                 request.setAttribute("allAdmins", getAllAdmins() );
-                
+                 
+               
             }
             else if(userrole.equals("customer")){
                 url = "/view/customer.jsp";
-                //Customer myInfo = getCustomer(username, password);              
-               // request.setAttribute("myInfo", myInfo);
+                Customer myInfo = getCustomer(username, password);              
+               request.setAttribute("myInfo", myInfo);
+               request.setAttribute("myOrders", getOrderHistory(myInfo.getId()));
             }
         }
         
@@ -272,7 +270,25 @@ public class ControlServlet extends HttpServlet {
         return admins;
     }
     
-    
+    private ArrayList<Order> getOrderHistory(int id) {
+                ArrayList<Order> history = new ArrayList<Order>();
+try{
+            Class.forName(DBclass);
+            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
+            Statement stmt = con.createStatement();  
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `order` WHERE customer_id ="+id );
+            while(rs.next()){
+                history.add(new Order(rs.getInt("order_id"), rs.getInt("driver_id"),rs.getInt("customer_id"),rs.getInt("manager_id"),rs.getInt("vehicle_id"),rs.getInt("order_status_id"), rs.getString("order_start_date"), rs.getString("order_cargo"),rs.getString("order_destination"),rs.getString("order_location"),rs.getString("order_finish_date") ) );
+            }
+            con.close();
+        }
+        catch(SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+         return history;
+         
+         
+       }
     
     
     
@@ -437,6 +453,9 @@ public class ControlServlet extends HttpServlet {
     }
 
     
+    
+      
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -475,5 +494,7 @@ public class ControlServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
 
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import java.io.Serializable;
@@ -19,7 +15,7 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(int i, int customerId, int vehicleId, int statusId, int driverId, int managerId, String carg, String startDate, String locat, String finishDate, String dest){
+    public Order(int i, int driverId, int customerId, int managerId, int vehicleId, int statusId, String startDate, String carg, String dest, String locat, String finishDate){
         id = i;
         customer_id = customerId;
         vehicle_id = vehicleId;

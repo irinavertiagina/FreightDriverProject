@@ -11,9 +11,9 @@
 <!DOCTYPE html>
 
 <%
-    ArrayList<Driver> drivers = (ArrayList<Driver>)request.getAttribute("allDrivers");
+   // ArrayList<Driver> drivers = (ArrayList<Driver>)request.getAttribute("allDrivers");
     ArrayList<Vehicle> vehicles = (ArrayList<Vehicle>)request.getAttribute("allVehicles");
-    ArrayList<Admin> admins = (ArrayList<Admin>)request.getAttribute("allAdmins");
+   // ArrayList<Admin> admins = (ArrayList<Admin>)request.getAttribute("allAdmins");
 
      
 
@@ -45,48 +45,19 @@
     </head>
     <body >
         <h1>Admin <%= username %></h1>
-        <p>       
+       
             <nav>
                 <h3 style="position: absolute; left: 40%; top: 8%">Workers</h3>
                 <ul style="position: absolute; left: 40%; top: 10%">
                     <p>
+                          <a href ="adminServlet?todo=addNewEmployee">Add new worker</a>
+        <p>
                        
-                    <form action="ControlServlet" method="post">    
-                        <select name="role">
-                            <option value="admin">admin</option>
-                            <option value="manager">manager</option>
-                            <option value="driver">driver</option>
-                        </select>
-                        <input type="hidden" name="action" value="seeEmployeeList">   
-                        <input type="submit" value="See workers list"> 
-                    </form>  
-                    <%
-                        for(int i = 0; i < drivers.size(); i++){
-                            Driver driver = drivers.get(i);
-                            String driver_username = (driver.getFirst_name() + " " + driver.getLast_name());
-                            out.println("<li><div>");
-                            out.println("<h2>Driver: " + driver_username + "</h2>");
-                            out.println("<p>ID: " + driver.getId() + "</p>");                           
-                            out.println("<h3>Current Assignment: </h3>");                          
-                            out.println("</div></li>");
-                        }
-                    %>
-                    
-                    
-                    
-                    
-                    
-                     <%
-                        for(int i = 0; i < admins.size(); i++){
-                            Admin admin = admins.get(i);
-                            String admin_username = (admin.getFirstName() + " " + admin.getLastName());
-                            out.println("<li><div>");
-                            out.println("<h2>Admin: " + admin_username + "</h2>");
-                            out.println("<p>ID: " + admin.getId() + "</p>");                           
-                                                    
-                            out.println("</div></li>");
-                        }
-                    %>
+                      
+ 
+                     <%@include file = "seeEmployeeList.jsp" %> 
+                     
+              
                     
                 </ul>
             </nav>
@@ -98,7 +69,8 @@
              <nav>
                 <h3 style="position: absolute; left: 70%; top: 8%">Vehicles</h3>
                 <ul style="position: absolute; right: 5%; top: 10%">
-                       
+                       <a href ="adminServlet?todo=addNewVehicle">Add new vehicle</a> 
+        <p>
                          <%@include file = "seeVehicleList.jsp" %> 
                      
                 </ul>

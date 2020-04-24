@@ -18,10 +18,7 @@
     ArrayList<Vehicle> vehicles = (ArrayList<Vehicle>)request.getAttribute("myVehicles");
     ArrayList<Order> orders = (ArrayList<Order>)request.getAttribute("myOrders");
    
-    Order a = new Order(1,1,1,1,1,1, "q", "q", "q", "q", "q");
-    orders.add(a);
-    Order b = new Order(1,1,1,1,1,1, "qf", "qf", "qf", "fq", "ffq");
-    orders.add(b);
+    
     Manager myInfo = (Manager)request.getAttribute("myInfo");
     String username = (myInfo.getFirst_name() + " " + myInfo.getLast_name());
 %>
