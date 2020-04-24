@@ -62,6 +62,7 @@ public class ControlServlet extends HttpServlet {
                 url = "/view/admin.jsp";
                 Admin myInfo = getAdmin(username, password);              
                 request.setAttribute("myInfo", myInfo);
+                request.setAttribute("myVehicles", getAllVehicles());
             }
             else if(userrole.equals("customer")){
                 url = "/view/customer.jsp";
