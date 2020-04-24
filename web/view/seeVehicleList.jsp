@@ -15,25 +15,7 @@
         <title>All vehicle</title>
     </head>
     <body>
-       
-<!-- 
-      <%
-   
-                for (Vehicle i : vList) {
-                    int id = i.getId();
-                    int driver = i.getDriver_id();
-                    
-                    //String status = i.getStatus();
-                    String service = i.getService_date();
-                    String info = i.getSpecs();
-                    
-             %>  
-                <p>ID: <%=id%> 
-                  
-                   INFO: <%=info%> 
-                   NEXT SERVICE DATE: <%=service%>  </p>
-            <% }%>
--->
+ 
                
                 
                 <%

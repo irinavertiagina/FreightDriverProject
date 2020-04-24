@@ -30,22 +30,19 @@
         <h1>Customer: <%= username + " " + myInfo.getId()%></h1>
        <p>
             <h3>History</h3>
-            <div>
+             
                 <%
                     for(int i = 0; i < myOrders.size(); i++){
-                        Order order = myOrders.get(i);
-                         
+                        Order order = myOrders.get(i);    
+                         out.println("<li><div>");
                             out.println("<p>FROM: " + order.getLocation()+ "</p>");
                              out.println("<p>TO: " + order.getDestination()+ "</p>");
                              out.println("<p>CARGO: " + order.getCargo()+ "</p>");
-                             
-                             
-                            break;
-                        
-                    }
+       out.println("</li></div>");
+                    } 
                 %>
-            </div>
+             
         </p>
-        
+      
     </body>
 </html>
