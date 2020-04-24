@@ -60,32 +60,17 @@ public class ControlServlet extends HttpServlet {
                 request.setAttribute("myInfo", myInfo);
                 request.setAttribute("allVehicles", getAllVehicles());
                 request.setAttribute("allDrivers", getAllDrivers() );
-                request.setAttribute("allAdmins", getAllAdmins() );
-                 
-               
+                request.setAttribute("allAdmins", getAllAdmins() );                               
             }
             else if(userrole.equals("customer")){
                 url = "/view/customer.jsp";
-                Customer myInfo = getCustomer(username, password);              
+               Customer myInfo = getCustomer(username, password);              
                request.setAttribute("myInfo", myInfo);
                request.setAttribute("myOrders", getOrderHistory(myInfo.getId()));
             }
         }
         
-//        else if(action.equals("seeEmployeeList")){
-//            String role = (String) request.getParameter("role");
-//         if(role.equals("driver")){}
-//        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
         else if(action.equals("managerChangeOrder")){
             url = "/view/manager.jsp";
             int managerId = Integer.parseInt(request.getParameter("managerId"));
@@ -105,6 +90,21 @@ public class ControlServlet extends HttpServlet {
             request.setAttribute("myVehicles", getAllVehicles());
             request.setAttribute("myOrders", getManagerOrders(managerId));
         }
+         else if(action.equals("makeNewOrder")){
+         url =  "/view/orderConfirm.jsp";
+          String date = request.getParameter("date");
+          String cargo = request.getParameter("cargo");
+          String loc = request.getParameter("location");
+          String dest = request.getParameter("destination");
+          String id = request.getParameter("customerId");
+          
+           makeNewOrder(date, cargo, loc, dest,id);
+       }
+        
+        
+        
+        
+        
         else if(action.equals("driverConfirm")){
             url = "/view/driver.jsp";
             int driverId = Integer.parseInt(request.getParameter("driverId"));
@@ -133,6 +133,25 @@ public class ControlServlet extends HttpServlet {
         }
         this.getServletContext().getRequestDispatcher(url).forward(request, response);
     }
+    
+    
+    private void makeNewOrder(String date, String cargo, String loc, String dest, String id){
+            try{
+                Order order = new Order();
+            Class.forName(DBclass);
+            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("INSERT INTO `order`(`driver_id`, `customer_id`, `order_start_date`, `order_cargo`, `order_destination`, `order_location`, `vehicle_id`, `order_status_id`, `manager_id`, `order_finish_date`)"
+                    + " VALUES (0, "+id+ ", \""+date+"\", \" "+cargo+"\", \""+dest+"\", \""+loc+"\", 1, 0, 4, \"order_finish_date\")");
+            con.close();
+        }
+        catch(SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
     
     private void changeOrder(int new_driver_id, int new_vehicle_id, int order_id){
         try{

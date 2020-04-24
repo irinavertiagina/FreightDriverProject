@@ -52,20 +52,11 @@
                     <p>
                           <a href ="adminServlet?todo=addNewEmployee">Add new worker</a>
         <p>
-                       
-                      
- 
                      <%@include file = "seeEmployeeList.jsp" %> 
-                     
-              
-                    
+                  
                 </ul>
             </nav>
-            
-            
-            
-            
-            
+  
              <nav>
                 <h3 style="position: absolute; left: 70%; top: 8%">Vehicles</h3>
                 <ul style="position: absolute; right: 5%; top: 10%">
