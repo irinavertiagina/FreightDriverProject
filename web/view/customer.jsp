@@ -44,22 +44,6 @@
         </nav>
     </p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <nav>
         <h3 style="position: absolute; left: 30%; top: 8%">Make new order</h3>
         <ul style="height: 80%; width: 30%; overflow: hidden; overflow-y: scroll; position: absolute; left: 30%; top: 10%">
@@ -78,8 +62,7 @@
                     <input type="text" name="destination"  > 
                 <p>            
                     <input type="hidden" name="action" value="makeNewOrder">
-                      <input type='hidden' name='customerId' value='<%= myInfo.getId()%>'>
-                    
+                      <input type='hidden' name='customerId' value='<%= myInfo.getId()%>'>                   
                     <input type="submit" value="Place order"> 
             </form> 
             <p>

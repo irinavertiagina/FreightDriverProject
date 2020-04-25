@@ -11,12 +11,6 @@
 <!DOCTYPE html>
 
 <%
-   // ArrayList<Driver> drivers = (ArrayList<Driver>)request.getAttribute("allDrivers");
-    ArrayList<Vehicle> vehicles = (ArrayList<Vehicle>)request.getAttribute("allVehicles");
-   // ArrayList<Admin> admins = (ArrayList<Admin>)request.getAttribute("allAdmins");
-
-     
-
     
     Admin myInfo = (Admin)request.getAttribute("myInfo");
     String username = (myInfo.getFirstName() + " " + myInfo.getLastName());
@@ -51,7 +45,7 @@
                 <ul style="position: absolute; left: 40%; top: 10%">
                     <p>
                           <a href ="adminServlet?todo=addNewEmployee">Add new worker</a>
-        <p>
+                           <p>
                      <%@include file = "seeEmployeeList.jsp" %> 
                   
                 </ul>

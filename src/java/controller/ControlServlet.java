@@ -60,7 +60,8 @@ public class ControlServlet extends HttpServlet {
                 request.setAttribute("myInfo", myInfo);
                 request.setAttribute("allVehicles", getAllVehicles());
                 request.setAttribute("allDrivers", getAllDrivers() );
-                request.setAttribute("allAdmins", getAllAdmins() );                               
+                request.setAttribute("allAdmins", getAllAdmins() );  
+                request.setAttribute("allManagers", getAllManagers());
             }
             else if(userrole.equals("customer")){
                 url = "/view/customer.jsp";
@@ -91,15 +92,17 @@ public class ControlServlet extends HttpServlet {
             request.setAttribute("myOrders", getManagerOrders(managerId));
         }
          else if(action.equals("makeNewOrder")){
+           request.setAttribute("confirmation", " your order have been placed");
          url =  "/view/orderConfirm.jsp";
+         
           String date = request.getParameter("date");
           String cargo = request.getParameter("cargo");
           String loc = request.getParameter("location");
           String dest = request.getParameter("destination");
-          String id = request.getParameter("customerId");
-          
+          String id = request.getParameter("customerId");       
            makeNewOrder(date, cargo, loc, dest,id);
        }
+        
         
         
         
@@ -137,7 +140,7 @@ public class ControlServlet extends HttpServlet {
     
     private void makeNewOrder(String date, String cargo, String loc, String dest, String id){
             try{
-                Order order = new Order();
+               
             Class.forName(DBclass);
             Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
             Statement stmt = con.createStatement();
@@ -289,6 +292,23 @@ public class ControlServlet extends HttpServlet {
         return admins;
     }
     
+    private ArrayList<Manager> getAllManagers(){
+        ArrayList<Manager> managers = new ArrayList<Manager>();
+        try{
+            Class.forName(DBclass);
+            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
+            Statement stmt = con.createStatement();  
+            ResultSet rs = stmt.executeQuery("SELECT * FROM manager");
+            while(rs.next()){
+                managers.add(new Manager(rs.getInt("manager_id"), rs.getString("manager_last_name"), rs.getString("manager_first_name"), rs.getString("manager_contact"), rs.getString("manager_password") ));
+            }
+            con.close();
+        }
+        catch(SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return managers;
+    }
     private ArrayList<Order> getOrderHistory(int id) {
                 ArrayList<Order> history = new ArrayList<Order>();
 try{

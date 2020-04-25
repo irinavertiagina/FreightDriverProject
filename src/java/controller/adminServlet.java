@@ -45,7 +45,9 @@ public class adminServlet extends HttpServlet {
         url = "/view/addEmployee.jsp";         
         } 
          else if(todo.equals("empAdded")){
-             DBUtil.addEmployee(role, lname, fname, contact);
+             //DBUtil.addEmployee(role, lname, fname, contact);
+              DBUtil.addNewEmployee(role, lname, fname, contact);
+              request.setAttribute("confirmation", " new worker have been added");
         url = "/view/orderConfirm.jsp"; //test!
         } 
          //add vehicles
@@ -86,12 +88,7 @@ public class adminServlet extends HttpServlet {
               
           }
         
-             
-//         request.setAttribute("role", role);
-//          request.setAttribute("lastName", lastName);
-//          person.setLastName(lastName);
-//            session.setAttribute("person", person);
-
+ 
 
 
          getServletContext().getRequestDispatcher(url)
