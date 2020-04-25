@@ -45,28 +45,26 @@ public class adminServlet extends HttpServlet {
         url = "/view/addEmployee.jsp";         
         } 
          else if(todo.equals("empAdded")){
-             //DBUtil.addEmployee(role, lname, fname, contact);
               DBUtil.addNewEmployee(role, lname, fname, contact);
               request.setAttribute("confirmation", " new worker have been added");
-        url = "/view/orderConfirm.jsp"; //test!
+        url = "/view/orderConfirm.jsp";  
         } 
+         
          //add vehicles
-         
-         
          else if(todo.equals("addNewVehicle")){
          url = "/view/addVehicle.jsp";
          }
-          else if(todo.equals("vehicleAdded")){
-             DBUtil.addVehicle(info, date, id);
-        url = "/view/orderConfirm.jsp"; //test!
+          else if(todo.equals("vehicleAdded")){           
+             DBUtil.addNewVehicle(info, date, id);
+              request.setAttribute("confirmation", " new vehicle have been added");
+        url = "/view/orderConfirm.jsp"; 
         }
         
         //see all vehicle
           else if(todo.equals("seeVehicleList")){
               ArrayList<Vehicle> vList = DBUtil.seeVehicleList();
               request.setAttribute("vList", vList);
-           //   String driverName = "testtesttest";
-              //request.setAttribute("driverName",driverName);
+ 
           url = "/seeVehicleList.jsp";
           }
         
