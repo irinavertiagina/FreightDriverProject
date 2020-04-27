@@ -11,7 +11,23 @@ import java.util.ArrayList;
 public class DBUtil {
          private static String DBclass = "com.mysql.cj.jdbc.Driver", DBurl = "jdbc:mysql://localhost:3306/db", DBusername = "root", DBpassword = "";
 
-        
+        public static ArrayList<Order> getFinishedOrders(){
+            ArrayList<Order> orders = new ArrayList<Order>();
+try{
+            Class.forName(DBclass);
+            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
+            Statement stmt = con.createStatement();  
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `order` WHERE order_status_id = 3" );
+            while(rs.next()){
+                orders.add(new Order(rs.getInt("order_id"), rs.getInt("driver_id"),rs.getInt("customer_id"),rs.getInt("manager_id"),rs.getInt("vehicle_id"),rs.getInt("order_status_id"), rs.getString("order_start_date"), rs.getString("order_cargo"),rs.getString("order_destination"),rs.getString("order_location"),rs.getString("order_finish_date") ) );
+            }
+            con.close();
+        }
+        catch(SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+         return orders;
+        }
         
          
           public static void addNewEmployee(String role, String lname, String fname, String contact){
@@ -78,27 +94,7 @@ public static void addNewVehicle(String info, String date, String id){
             e.printStackTrace();
         }
     }          
-                     public static void addVehicle(String info, String date, String id) {
-         
-        try {
-            String dbURL = "jdbc:mysql://localhost:3306/db";
-            String user = "root";
-            String password = "";
-
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(dbURL, user, password);
-           Statement statement = connection.createStatement();
-
-            String preparedQuery = "INSERT INTO `vehicle`( `vehicle_service_date`, `vehicle_status`, `vehicle_specs`, `driver_id`) VALUES (`"+date+"` , `status`, `"+info+"`, "+id+")"; 
-            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(preparedQuery);
- 
-           ps.executeUpdate();
-                     connection.close();
-            } catch (Exception e) {
-            System.out.println("ERROR! " + e);
-        }
-        
-        }
+                      
                   
                   public static ArrayList<Driver> getAllDrivers(){
         ArrayList<Driver> drivers = new ArrayList<Driver>();

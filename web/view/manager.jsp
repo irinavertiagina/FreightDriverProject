@@ -23,24 +23,9 @@
     String username = (myInfo.getFirst_name() + " " + myInfo.getLast_name());
 %>
 <html>
-    <style>
-         footer {
-            background-color: #E6E6FA;
-        }
-        div {
-            width: 250px;
-            border: 10px solid green;
-            padding: 10px;
-            margin: 20px;
-        }
-        ul{
-            height: 80%;
-            width: 22%;
-            overflow:hidden;
-            overflow-y: scroll;
-        }
-    </style>
+
     <head>
+                <link rel="stylesheet" type="text/css" href="view/stylesheet.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manager</title>
     </head>

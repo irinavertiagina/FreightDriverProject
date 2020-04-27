@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.Admin;
 import model.Customer;
+import model.DBUtil;
 import model.Manager;
 import model.Driver;
 import model.Order;
@@ -62,6 +63,7 @@ public class ControlServlet extends HttpServlet {
                 request.setAttribute("allDrivers", getAllDrivers() );
                 request.setAttribute("allAdmins", getAllAdmins() );  
                 request.setAttribute("allManagers", getAllManagers());
+                request.setAttribute("finishedOrders", DBUtil.getFinishedOrders() ); 
             }
             else if(userrole.equals("customer")){
                 url = "/view/customer.jsp";

@@ -13,15 +13,9 @@
 %>
 
 <html>  
-    <style>
-        div {
-            width: 250px;
-            border: 10px solid green;
-            padding: 10px;
-            margin: 20px;
-        }
-    </style>
+  
     <head>
+                <link rel="stylesheet" type="text/css" href="view/stylesheet.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Driver</title>
     </head>
