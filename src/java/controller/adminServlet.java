@@ -20,11 +20,7 @@ public class adminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        
-                
-                 
-        
+      //  HttpSession session = request.getSession();
          String todo = request.getParameter("todo");
          String role = request.getParameter("role");
          String lname= request.getParameter("lastName");
@@ -49,6 +45,9 @@ public class adminServlet extends HttpServlet {
               request.setAttribute("confirmation", " new worker have been added");
         url = "/view/orderConfirm.jsp";  
         } 
+         else if(todo.equals("deleteOrder")){
+         DBUtil.deleteOrder();
+         }
          
          //add vehicles
          else if(todo.equals("addNewVehicle")){

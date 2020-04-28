@@ -7,22 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-
     Customer myInfo = (Customer) request.getAttribute("myInfo");
     ArrayList<Order> myOrders = (ArrayList<Order>) request.getAttribute("myOrders");
     String username = (myInfo.getFirstName() + " " + myInfo.getLastName());
 %>
 
 <html>  
-    <style>
-        div {
-            width: 250px;
-            border: 10px solid green;
-            padding: 10px;
-            margin: 20px;
-        }
-    </style>
     <head>
+        <link rel="stylesheet" type="text/css" href="view/stylesheet.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer</title>
     </head>
@@ -62,33 +54,12 @@
                     <input type="text" name="destination"  > 
                 <p>            
                     <input type="hidden" name="action" value="makeNewOrder">
-                      <input type='hidden' name='customerId' value='<%= myInfo.getId()%>'>                   
+                    <input type='hidden' name='customerId' value='<%= myInfo.getId()%>'>                   
                     <input type="submit" value="Place order"> 
             </form> 
             <p>
-       </ul>
+        </ul>
     </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

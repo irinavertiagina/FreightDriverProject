@@ -19,7 +19,6 @@
 
 
 <html>
-
     <head>
         <link rel="stylesheet" type="text/css" href="view/stylesheet.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,13 +26,6 @@
     </head>
     <body >
         <h1>Admin <%= username%></h1>
-
-<!--
-        <nav>
-            <h3 style="position: absolute; left: 5%; top: 8%">Orders</h3>
-            <ul style="position: absolute; left: 70%; top: 10%">
-
-        </nav>-->
             <nav>
                 <h3>Orders</h3>
                 <ul style="position: absolute; top: 10%">                    
@@ -50,15 +42,12 @@
                             out.println("<p>Driver ID: " + order.getDriver_id() + "</p>");
                             out.println("<p>Vehicle ID: " + order.getVehicle_id() + "</p>");
                     %>
-                    <form action="ControlServlet" method="get">
-                        <p>Reassign Driver with ID <input type="text" name="newDriverID"></p>
-                        <p>Reassign Vehicle with ID <input type="text" name="newVehicleID"></p>
-                        <input type="submit" value="Reassign">
-                        <input type="hidden" name="action" value="managerChangeOrder">
-                        <input type='hidden' name='managerId' value='<%= myInfo.getId()%>'>
-                        
-                        <input type='hidden' name='managerP' value='<%= myInfo.getPassword()%>'>
-                        <input type='hidden' name='orderId' value='<%= order.getId()%>'>
+                    <form action="adminServlet" method="get">                    
+                      
+                        <input type="submit" value="Delete from database">
+                        <input type="hidden" name="todo" value="deleteOrder">                       
+<!--                    <input type='hidden' name='managerP' value='<%= myInfo.getPassword()%>'>
+                        <input type='hidden' name='orderId' value='<%= order.getId()%>'>-->
                     </form>
                     <%
                             out.println("</div></li>");

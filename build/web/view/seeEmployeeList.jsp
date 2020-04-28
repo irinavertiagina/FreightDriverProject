@@ -16,10 +16,7 @@
               ArrayList<Driver> alldrivers = (ArrayList<Driver>)request.getAttribute("allDrivers");
               ArrayList<Admin> admins = (ArrayList<Admin>)request.getAttribute("allAdmins");
               ArrayList<Manager> managers = (ArrayList<Manager>) request.getAttribute("allManagers");
-             
-              
-               
-
+  
                         for(int i = 0; i < alldrivers.size(); i++){
                             Driver driver = alldrivers.get(i);
                             String driver_username = (driver.getFirst_name() + " " + driver.getLast_name());
@@ -31,22 +28,7 @@
                         }
  
                     %>
-                    
-                    
-                    <%
-                        for(int i = 0; i < admins.size(); i++){
-                            Admin admin = admins.get(i);
-                            String admin_username = (admin.getFirstName() + " " + admin.getLastName());
-                            out.println("<li><div>");
-                            out.println("<h2>Admin: " + admin_username + "</h2>");
-                            out.println("<p>ID: " + admin.getId() + "</p>");                           
-                            out.println("</div></li>");
-                        }
-                    %>
-                    
-                    
-                    
-                    
+                   
                      <%
                         for(int i = 0; i < managers.size(); i++){
                             Manager mng = managers.get(i);
@@ -59,6 +41,16 @@
                         }
                     %>
                     
+                                        <%
+                        for(int i = 0; i < admins.size(); i++){
+                            Admin admin = admins.get(i);
+                            String admin_username = (admin.getFirstName() + " " + admin.getLastName());
+                            out.println("<li><div>");
+                            out.println("<h2>Admin: " + admin_username + "</h2>");
+                            out.println("<p>ID: " + admin.getId() + "</p>");                           
+                            out.println("</div></li>");
+                        }
+                    %>
                     
                     
     </body>
