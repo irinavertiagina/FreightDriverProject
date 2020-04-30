@@ -6,8 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    ArrayList<Order> myOrders = (ArrayList<Order>)request.getAttribute("myOrders");
-    
+    ArrayList<Order> myOrders = (ArrayList<Order>)request.getAttribute("myOrders");  
     Driver myInfo = (Driver)request.getAttribute("myInfo");
     String username = (myInfo.getFirst_name() + " " + myInfo.getLast_name());
 %>
