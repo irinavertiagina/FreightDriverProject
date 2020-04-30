@@ -17,16 +17,10 @@ import model.Driver;
 import model.Order;
 import model.Vehicle;
 
-/**
- *
- * @author Kyle
- */
+
 public class ControlServlet extends HttpServlet {
 
-   // private String DBclass = "com.mysql.cj.jdbc.Driver", DBurl = "jdbc:mysql://localhost:3306/freightdriverproj", DBusername = "root", DBpassword = "";
-     private String DBclass = "com.mysql.cj.jdbc.Driver", DBurl = "jdbc:mysql://localhost:3306/db", DBusername = "root", DBpassword = "";
-
-   
+ 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");

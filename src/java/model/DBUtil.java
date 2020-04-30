@@ -236,23 +236,7 @@ public class DBUtil {
         return vehicles;
     }
     
-//    publicstatic ArrayList<Driver> getAllDrivers(){
-//        ArrayList<Driver> drivers = new ArrayList<Driver>();
-//        try{
-//            Class.forName(DBclass);
-//            Connection con = DriverManager.getConnection(DBurl,DBusername,DBpassword);
-//            Statement stmt = con.createStatement();  
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM driver");
-//            while(rs.next()){
-//                drivers.add(new Driver(rs.getInt("driver_id"), rs.getString("driver_last_name"), rs.getString("driver_first_name"), rs.getString("driver_contacts"), rs.getString("manager_id"), rs.getString("driver_password"), rs.getInt("current_assignment_id")));
-//            }
-//            con.close();
-//        }
-//        catch(SQLException | ClassNotFoundException e){
-//            e.printStackTrace();
-//        }
-//        return drivers;
-//    }
+
     
     public static ArrayList<Admin> getAllAdmins(){
         ArrayList<Admin> admins = new ArrayList<Admin>();
